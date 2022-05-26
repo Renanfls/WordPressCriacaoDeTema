@@ -29,20 +29,21 @@ Dentro do arquivo `style.css` adicione dentro de um comentario o `Theme Name:`, 
 **EX.:**
 
 <code>
-/* 
 
-Theme Name: Alura Intercâmbios
+    /* 
 
-Author: Renan Fabricio Lima da Silva
+    Theme Name: Alura Intercâmbios
 
-Description: Tema customizado para a Alura 
-Intercâmbios
+    Author: Renan Fabricio Lima da Silva
 
-Version: 1.0.0
+    Description: Tema customizado para a Alura 
+    Intercâmbios
 
-Tags: cursos, idiomas, intercâmbios, viagens
+    Version: 1.0.0
 
-*/
+    Tags: cursos, idiomas, intercâmbios, viagens
+
+    */
 </code>
 
 ## **Colocando Imagem Customizada do Tema**
@@ -87,7 +88,6 @@ Passando o parâmetro `name` é possível pegar o nome do site dado no Painel Ad
 </code>
 
 #
-
 ## **Criando footer**
 
 7. Retire o fechamento das tags `</body>` e `</html>` do arquivo `header.php` e adicione no arquivo `footer.php`
@@ -104,7 +104,6 @@ Passando o parâmetro `name` é possível pegar o nome do site dado no Painel Ad
 </code>
 
 #
-
 ## **Adicionando opção menu no Painel do WP**
 
 Por padrão quando criamos temas o WordPress não consegue saber se nesse tema que vamos criar irá ter um menu, por isso ele não adiciona no painel e pra isso temos que seguir os adiante:
@@ -128,7 +127,6 @@ Nosso parâmetro `$location` será `'menu-navegacao'` e o parâmetro `$descripti
 </code>
 
 #
-
 ## **Executando funções com Action Hook**
 
 12. Logo após a função adicione a action hook `add_action('init', 'resgistrandoMenu');`
@@ -147,7 +145,6 @@ https://codex.wordpress.org/Plugin_API/Action_Reference
 </code>
 
 #
-
 ## **Função responsável por exibir Menu**
 
 13. No arquivo `header.php` logo após o `<body>` abra a tag PHP 
@@ -168,7 +165,6 @@ https://codex.wordpress.org/Plugin_API/Action_Reference
 </code>
 
 #
-
 ## **Função que da suporte a logos customizados**
 
 16. Adicionar uma nova função do WP chamada `add_theme_support( $feature, ...$args )` função responsável por dar suporte a logos customizados
@@ -181,8 +177,8 @@ https://codex.wordpress.org/Plugin_API/Action_Reference
 
     `add_action('after_setup_theme', 'adicionando_recursos_ao_tema');`
 </code>
-#
 
+#
 ## **Função responsável por exibir o Logo**
 
 19. No arquivo `header.php` devemos definir a função do WP `the_custom_logo()` antes da função `wp_nav_menu()`
@@ -256,6 +252,7 @@ responsável por imprimir o caminho do diretório raiz do tema que estamos crian
     </div>
 </code>
 
+#
 ## **Adicionando `<nav>`**
 
 30. Dentro da `<div>`, de baixo da tag PHP, adicione a tag `<nav>`
@@ -281,7 +278,7 @@ responsável por imprimir o caminho do diretório raiz do tema que estamos crian
     </nav>
 </code>
 
-## **Resultado Final do código do header:**
+### **Resultado Final do código do header:**
 
 <code>
 
@@ -321,10 +318,12 @@ responsável por imprimir o caminho do diretório raiz do tema que estamos crian
     </header>
 </code>
 
+#
 ## **Adicionando Opção de imagens em páginas e posts no Painel do WP**
 
 33. No arquivo `functions.php` dentro da função `adicionando_recursos_ao_tema()` adicione mais uma função `add_theme_support()` passando como parâmetro a recurso `'post-thumbnails'`
 
+#
 ## **Pegando conteúdo do Painel Administrativo e exibindo**
 
 ### **Loop WordPress**
@@ -357,6 +356,7 @@ Depois de criar uma Página ou post colocando o **titulo**, **imagem** e **conte
     require_once 'footer.php';
 </code>
 
+#
 ## **Atribuindo Estilo no conteúdo**
 
 35. Vamos adicionar o arquivo de estilização da página `sobre_nos.css` dentro da pasta `css`
@@ -370,6 +370,7 @@ Depois de criar uma Página ou post colocando o **titulo**, **imagem** e **conte
 37. No arqv. `index.php` antes do `require_once 'header.php';` criamos a variável `$estiloPagina` recebendo o caminho até o arquivo de estilização da página sobre nós
 
 **EX.:**
+
 <code>
 
     `$estiloPagina = 'sobre_nos.css';`
@@ -399,7 +400,7 @@ Depois de criar uma Página ou post colocando o **titulo**, **imagem** e **conte
 42. Na função `the_title( $before, $after )` passaremos o `<h2>` como o 1° argumento e o `</h2>` como o 2° argumento, assim envolvendo o titulo com a tag `h2`
 43. Logo depois da função `the_content();` colocamos o fechamento da `</div>` com o `echo`
 
-**Resultado final até o momento**
+### **Resultado final até o momento**
 
 <code>
 
@@ -419,6 +420,7 @@ Depois de criar uma Página ou post colocando o **titulo**, **imagem** e **conte
     <?php    
 </code>
 
+#
 ## **Criando footer**
 
 44. Adicionar arquivo da estilização do footer na pasta `css`
@@ -437,12 +439,14 @@ Depois de criar uma Página ou post colocando o **titulo**, **imagem** e **conte
     </html>
 </code>
 
+#
 ## **Hierarquia dos templates**
 
 https://codex.wordpress.org/pt-br:Hierarquia_de_Modelos_WordPress
 
 Se retirar todo o conteúdo do `index.php` e passar para um arquivo mais especifíco sendo `page-$slug.php` esse arquivo será mais especifíco que o `index.php`. E caso esse arquivo `page-$slug.php` não exista o WP tenta achar o arquivo mais especifíco, que no caso seria o `index.php`, e resultaria em uma página em branco, pós o arqv. `index.php` está vazio.
 
+#
 ## **Posts customizados**
 
 Adicionando função personalizada na barra lateral esquerda do Painel Admin do WP
@@ -450,7 +454,7 @@ Adicionando função personalizada na barra lateral esquerda do Painel Admin do 
 49. No arquivo `functions.php` adicione uma função com o nome `registrando_post_customizado()`
 50. Dentro dela chame a função do WP `register_post_type( $post_type, $args = array() )` em que o 1° parâmetro - é a chave indentificação do post customizado em que não pode exceder mais que 20 caracteres, devendo ter apenas letras minusculas, caracteres alfanumericos, com ifens, underlines - e o 2° parâmetro são a funcionalidades que serão aplicadas, e cada funcionalidade é definida por uma chave de identificação especificada dentro do `array()`
 
-**Chaves de identicação:**
+### **Chaves de identicação:**
 
 `'labels'` Define qual o nome será exibido no menu lateral esquerdo do Painel sendo passado por um `array('name' => 'nome-desejado')`
 
@@ -500,7 +504,7 @@ Adicionando função personalizada na barra lateral esquerda do Painel Admin do 
     'menu_icon' => 'dashicons-admin-site'
 </code>
 
-**Resultado Final:**
+### **Resultado Final:**
 
 <code>
 
@@ -520,6 +524,7 @@ Adicionando função personalizada na barra lateral esquerda do Painel Admin do 
     add_action('init', 'registrando_post_customizado');
 </code>
 
+#
 ## **Taxonomia**
 
 Nomenclatura utilizada para agrupar posts de acordo com alguma característica em comum.
@@ -543,12 +548,14 @@ Nomenclatura utilizada para agrupar posts de acordo com alguma característica e
     add_action('init', 'registrando_taxonomia');
 </code>
 
+#
 ## **Configurando página destinos**
 
 53. No arqv. `page-destinos.php` temos que adicionar um `require_once 'header.php'` e `require_once 'footer.php'`
 54. Entre os requires adicione o **Loop WordPress**
 55. Dentro do loop adicione as funções `the_post_thumbnail();`, `the_title();` e `the_content();`
 
+#
 ## **`WP_Query()`**
 
 Consulta personalizada
@@ -585,7 +592,7 @@ Passamos a costumização para o construtor do `WP_Query()` através da variáve
 64. dentro da função `the_title($before, $after)` no `$before` passamos a abertura da tag `p` e no `$after` passamos o fechamento da tag `p`
 65. Logo após as funções do WP dentro do `while` fechamos a tag `li` com o `echo`
 
-**Resultado até o momento do arquivo `page-destinos.php`:**
+### **Resultado até o momento do arquivo `page-destinos.php`:**
 
 <code>
 
@@ -612,6 +619,7 @@ Passamos a costumização para o construtor do `WP_Query()` através da variáve
     require_once 'footer.php';
 </code>
 
+#
 ## **Formulário**
 
 Pegando nome das taxonomias de forma dinâmica com a função `get_terms($query = '')` que pode retornar um **array()**, **int** ou **Error**. O contrutor dessa função espera receber um `$query` do tipo `array()` como queremos o nome das taxonomias usaremos a chave `'taxonomy'` passando como valor identificador que atribuimos na função `register_taxonomy()` que seria `paises`
@@ -665,6 +673,7 @@ Através do array gerado da taxonomia fazemos a filtragem `$pais->name` e pegamo
 
 Quando o valor retornado pelo array for um objeto usamos `->` e quando o valor retornado for um array usamos `[]`
 
+#
 ## **Filtrando categorias**
 
 No do arquivo `page-destinos.php` dentro da variável `$args` vamos passar mais uma chave dentro do array que será `'tax_query'` responsável por realizar as consultas refente as taxonomias e passamos como valor a `$paisSelecionado` onde irá conter todas as informações necessárias para que seja feita filtragem
@@ -695,6 +704,7 @@ Chaves passadas no array da variável `$paisSelecionado`:
 
 http://alura-intercambios.local/destinos/?`paises=Austrália#`
 
+#
 ## **Resolvendo problema da opção `--Selecione--` no campo de busca**
 
 Essa opção quando ativa deverá mostrar todos os países novamente
@@ -735,6 +745,7 @@ Para isso temos que volta na tag `option` que está presente no formulário e fa
     ><?= $pais->name ?></option>
 </code>
 
+#
 ## **Retirando o `/home/` da URL da pág. principal**
 
 No painel admin do WP vá em:
@@ -744,6 +755,7 @@ No painel admin do WP vá em:
 
 Agora para que o WP identifique a pagina frontal(principal) é necessario o arquivo `front-page.php`
 
+#
 ## **Configurando Metabox**
 
 Criamos uma nova função `registrando_metabox()` e dentro dela chamamos a função do WP `add_meta_box('id', 'title', 'callback', 'screen')`
@@ -778,6 +790,7 @@ Agora precisamos criar a função `ai_funcao_callback` que será responsável po
     }
 </code>
 
+#
 ## **Salvando dados metabox**
 
 Vamos criar a função `salvando_dados_metabox()` passando como parâmetro a variável responsável por armazenar o id que será gerado pelo WP assim que publicarmos os textos adicionado no Painel Admin, dentro do post customizado **Banner**
@@ -838,6 +851,7 @@ Agora vamos adicionar algumas alterações na função `ai_funcao_callback()` pa
     }
 </code>
 
+#
 ## **Trazendo imagem banner**
 
 Vamos adicionar o arquivo de estilo da home e referenciar ele em seguida
@@ -869,6 +883,7 @@ no arquivo `front-page.php` e a cima de `require_once 'header.php';` vamos a cha
     require_once 'footer.php';
 </code>
 
+#
 ## **Adicionando scripts**
 
 Adicionamos o arqv. `typed.min.js` dentro de uma pasta `js` na pasta do tema que estamos criando
@@ -889,6 +904,7 @@ Criamos um arqv. `texto-banner.js` e dentro dele adicionamos o setup segundo a d
     };
 </code>
 
+#
 ## **Texto dinâmico**
 
 No arquivo `front-page.php` adicionamos a `div` com `span`
@@ -988,7 +1004,7 @@ Depois dentro da função `adicionando_scripts()` dentro da condição `if` no f
     );
 </code>
 
-**Resultado final da função ``adicionando_scripts()``**
+### **Resultado final da função ``adicionando_scripts()``**
 
 <code>
 
